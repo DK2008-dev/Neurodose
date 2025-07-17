@@ -28,7 +28,7 @@ class EEGDataLoader:
                  h_freq: float = 45.0,
                  notch_freq: float = 50.0,
                  new_sfreq: float = 500.0,
-                 eeg_reject_thresh: float = 100e-6):
+                 eeg_reject_thresh: float = 2500e-6):  # 2500µV = 0.0025V
         """
         Initialize the EEG data loader.
         

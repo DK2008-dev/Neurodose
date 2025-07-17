@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Setup EEG Pain Classification Project",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"-c",
+				"print('EEG Pain Classification Project Setup Complete!\\n\\nNext Steps:\\n1. Download OSF dataset: https://osf.io/bsv86/\\n2. Place data in data/raw/ folder\\n3. Run: python scripts/preprocess_data.py --data_dir data/raw\\n4. Run: python scripts/train_model.py\\n5. Test real-time: python scripts/real_time_predict.py --simulate')"
+			],
+			"group": "build",
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

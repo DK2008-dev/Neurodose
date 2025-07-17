@@ -1,0 +1,132 @@
+# Data preprocessing configuration
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  
+  # Preprocessing parameters
+  preprocessing:
+    l_freq: 1.0          # High-pass filter (Hz)
+    h_freq: 45.0         # Low-pass filter (Hz)
+    notch_freq: 50.0     # Notch filter (Hz)
+    new_sfreq: 500.0     # Target sampling rate (Hz)
+    eeg_reject_thresh: 100e-6  # Artifact rejection threshold (V)
+    
+  # Windowing parameters
+  windowing:
+    window_length: 4.0   # Window length (seconds)
+    step_size: 1.0       # Step size (seconds)
+    
+  # Pain severity mapping
+  severity_mapping:
+    low_threshold: 30    # ≤ 30% → low pain
+    moderate_threshold: 50  # 31-50% → moderate pain
+    # > 50% → high pain
+
+# Model configuration
+model:
+  type: "eegnet"  # Options: "eegnet", "shallow", "deep"
+  
+  # Model parameters
+  n_channels: 64
+  n_samples: 2000  # 4 seconds at 500 Hz
+  n_classes: 3     # low, moderate, high
+  
+  # EEGNet specific parameters
+  eegnet:
+    dropout_rate: 0.5
+    kernel_length: 64
+    F1: 8
+    D: 2
+    F2: 16
+  
+  # Shallow ConvNet parameters
+  shallow:
+    n_filters_time: 40
+    filter_time_length: 25
+    n_filters_spat: 40
+    pool_time_length: 75
+    pool_time_stride: 15
+    dropout_rate: 0.5
+  
+  # Deep ConvNet parameters
+  deep:
+    n_filters_1: 25
+    n_filters_2: 50
+    n_filters_3: 100
+    n_filters_4: 200
+    filter_length: 10
+    dropout_rate: 0.5
+
+# Training configuration
+training:
+  # Data split
+  test_size: 0.2
+  val_size: 0.1
+  random_state: 42
+  stratify: true
+  
+  # Training parameters
+  batch_size: 32
+  learning_rate: 0.001
+  weight_decay: 1e-4
+  epochs: 100
+  
+  # Early stopping
+  early_stopping:
+    patience: 15
+    min_delta: 0.001
+    restore_best_weights: true
+  
+  # Learning rate scheduling
+  scheduler:
+    type: "step"  # Options: "step", "cosine", "plateau"
+    step_size: 30
+    gamma: 0.1
+  
+  # Device
+  device: "auto"  # Options: "auto", "cuda", "cpu"
+
+# Real-time streaming configuration
+streaming:
+  stream_name: "EEG"
+  stream_type: "EEG"
+  n_channels: 64
+  sampling_rate: 500.0
+  window_length: 4.0   # seconds
+  step_size: 1.0       # seconds
+  buffer_length: 10.0  # seconds
+  
+  # Output stream
+  output_stream:
+    name: "PainClassification"
+    type: "Markers"
+
+# Evaluation configuration
+evaluation:
+  class_names: ["low", "moderate", "high"]
+  
+  # Metrics to compute
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1"
+    - "confusion_matrix"
+  
+  # Visualization
+  plots:
+    confusion_matrix: true
+    training_history: true
+    feature_importance: true
+
+# Logging configuration
+logging:
+  level: "INFO"  # Options: "DEBUG", "INFO", "WARNING", "ERROR"
+  log_file: "logs/training.log"
+  
+# Paths
+paths:
+  models: "models"
+  logs: "logs"
+  figures: "figures"
+  results: "results"

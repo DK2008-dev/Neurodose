@@ -1,0 +1,31 @@
+# Core neuroscience and EEG processing
+mne>=1.8.0
+numpy>=1.24.0,<2.4.0
+scipy>=1.10.0
+matplotlib>=3.7.0
+scikit-learn>=1.3.0
+
+# Deep learning - PyTorch (more stable than TensorFlow for Python 3.13)
+torch>=2.1.0
+torchvision>=0.16.0
+torchaudio>=2.1.0
+
+# Real-time streaming
+pylsl>=1.16.0
+
+# Data handling and visualization
+pandas>=2.0.0
+seaborn>=0.12.0
+h5py>=3.8.0
+tqdm>=4.65.0
+pyyaml>=6.0
+
+# Optional but useful
+jupyter>=1.0.0
+ipywidgets>=8.0.0
+plotly>=5.14.0
+
+# Development and testing
+pytest>=7.0.0
+black>=23.0.0
+flake8>=6.0.0

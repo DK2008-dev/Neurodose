@@ -525,6 +525,12 @@ Based on the full dataset structure, we can expand beyond perception to:
 - **Shell**: PowerShell 5.1
 - **IDE**: VS Code with Python extension
 - **Virtual Environment**: Activated and configured
+- **Version Control**: Git repository initialized
+  - **User**: Dhruv Kurup (dhruvkurup@outlook.com)
+  - **Initial Commit**: 36286b6 (128 files tracked)
+  - **Files Tracked**: All source code, configs, tests, documentation
+  - **Files Excluded**: Large data files (.eeg), Python cache, logs
+  - **Repository Status**: Clean working tree, ready for development
 
 ---
 

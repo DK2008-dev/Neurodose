@@ -237,6 +237,21 @@ class EEGDataLoader:
         
         if use_laser_onset:
             # Extract windows centered on laser onset events
+            # Get event_id mapping first
+            events_temp, event_id = mne.events_from_annotations(raw, verbose=False)
+            
+            # Get laser event codes from extract_events method
+            laser_codes = []
+            for desc, code in event_id.items():
+                if 'L  1' in desc:  # Laser onset - use these for epoch timing
+                    laser_codes.append(code)
+            
+            if not laser_codes:
+                logger.warning("No laser event codes found!")
+                return np.array([]), np.array([])
+                
+            logger.info(f"Found laser codes: {laser_codes}")
+            
             laser_events = []
             for event in events:
                 # Look for stimulus events (S 1, S 2, S 3) followed by laser (L 1)
@@ -246,7 +261,7 @@ class EEGDataLoader:
                     for other_event in events:
                         if (other_event[0] > event[0] and 
                             other_event[0] < event[0] + 2000 and  # Within 2 seconds
-                            other_event[2] not in severity_map):  # Not a stimulus event
+                            other_event[2] in laser_codes):  # Specifically laser events
                             laser_time = other_event[0]
                             break
                     
@@ -313,7 +328,7 @@ class EEGDataLoader:
                         labels.append(label)
         
         X = np.array(windows)
-        y = np.array(labels)
+        y = np.array(labels, dtype=int)  # Ensure integer labels for bincount
         
         logger.info(f"Created {len(X)} windows with label distribution: {np.bincount(y)}")
         

@@ -1,0 +1,13 @@
+Analysis: EEG Pain Classification Research Paper
+Date: 2025-07-18
+Dataset: OSF Brain Mediators for Pain
+Participants: 5
+Total_Epochs: 201
+Features_Extracted: 78
+Best_Method: Simple Random Forest (78 features)
+Best_Accuracy_Mean: 0.5171951219512195
+Best_Accuracy_Std: 0.04434147012262153
+Above_Random_Baseline: Yes
+Clinical_Significance: Modest but meaningful improvement over chance
+Key_Finding: Simple features outperform complex approaches
+Validation_Method: Leave-One-Participant-Out Cross-Validation

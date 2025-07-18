@@ -1,0 +1,7 @@
+participant,Total_Epochs,Low_Pain_Count,High_Pain_Count,High_Pain_Ratio
+vp01,40,20,20,0.5
+vp02,41,17,24,0.585
+vp03,40,20,20,0.5
+vp04,40,20,20,0.5
+vp05,40,20,20,0.5
+TOTAL,201,97,104,0.5174129353233831

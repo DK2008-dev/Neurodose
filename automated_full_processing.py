@@ -74,7 +74,7 @@ def process_single_participant(vp_id, data_dir, output_dir):
         start_time = time.time()
         
         # Initialize data loader
-        loader = EEGDataLoader()
+        loader = EEGDataLoader(data_dir)
         
         # Load and preprocess data
         base_name = f"Exp_Mediation_Paradigm1_Perception_{vp_id}"

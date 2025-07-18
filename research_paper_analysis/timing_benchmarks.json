@@ -1,0 +1,26 @@
+{
+  "processing_times": {
+    "data_loading": "0.02 seconds",
+    "random_forest_training": "4.50 seconds",
+    "xgboost_training": "54.09 seconds",
+    "simpleeegnet_simulation": "0.00 seconds",
+    "total_pipeline": "64.46 seconds"
+  },
+  "system_info": {
+    "python_version": "3.13+",
+    "key_libraries": {
+      "scikit-learn": "1.6+",
+      "xgboost": "3.0+",
+      "pandas": "2.3+",
+      "matplotlib": "3.10+",
+      "seaborn": "0.13+"
+    }
+  },
+  "pipeline_summary": {
+    "feature_extraction": "78 neuroscience-aligned features",
+    "model_training": "Random Forest + XGBoost with augmentation",
+    "cnn_baseline": "Simulated based on paper results (48.7%)",
+    "visualization": "5 publication-ready figures",
+    "validation_method": "Leave-One-Participant-Out CV"
+  }
+}

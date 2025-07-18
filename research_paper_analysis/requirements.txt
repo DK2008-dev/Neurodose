@@ -1,0 +1,27 @@
+# EEG Pain Classification Pipeline Requirements
+# Complete analysis with LOPOCV validation
+
+# Core scientific computing
+numpy>=2.2.0
+pandas>=2.3.0
+scipy>=1.16.0
+
+# Machine learning
+scikit-learn>=1.6.0
+xgboost>=3.0.0
+imbalanced-learn>=0.13.0
+
+# Visualization
+matplotlib>=3.10.0
+seaborn>=0.13.0
+
+# Data handling and utilities
+pathlib
+tqdm>=4.67.0
+
+# Development and analysis
+jupyter>=1.0.0
+ipython>=8.0.0
+
+# Note: MNE and other EEG libraries needed for raw data processing
+# This pipeline works with pre-processed features

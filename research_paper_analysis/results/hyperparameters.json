@@ -1,0 +1,85 @@
+{
+  "simple_random_forest": {
+    "n_estimators": 100,
+    "max_depth": 10,
+    "min_samples_split": 5,
+    "min_samples_leaf": 2,
+    "random_state": 42,
+    "n_jobs": -1,
+    "features": 78,
+    "feature_types": [
+      "spectral_power_5_bands",
+      "frequency_ratios_18",
+      "spatial_asymmetry_5",
+      "erp_components_4",
+      "temporal_features_18"
+    ]
+  },
+  "advanced_xgboost": {
+    "n_estimators": 200,
+    "max_depth": 6,
+    "learning_rate": 0.1,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "random_state": 42,
+    "features": 645,
+    "feature_types": [
+      "spectral_power",
+      "wavelet_decomposition_5_levels",
+      "connectivity_measures",
+      "coherence_analysis",
+      "phase_locking_values",
+      "cross_correlation",
+      "ensemble_voting"
+    ]
+  },
+  "cnn_eegnet": {
+    "architecture": "EEGNet",
+    "temporal_conv_filters": 16,
+    "spatial_conv_filters": 32,
+    "dropout_rate": 0.25,
+    "kernel_length": 64,
+    "epochs": 50,
+    "batch_size": 32,
+    "optimizer": "adam",
+    "learning_rate": 0.001,
+    "loss": "sparse_categorical_crossentropy",
+    "input_shape": [
+      68,
+      2000
+    ],
+    "activation": "elu"
+  },
+  "preprocessing": {
+    "sampling_rate": 500,
+    "filter_low": 1,
+    "filter_high": 45,
+    "notch_filter": 50,
+    "epoch_length": 4.0,
+    "baseline_correction": [
+      -1.0,
+      0.0
+    ],
+    "artifact_threshold": 2500,
+    "ica_components": 20,
+    "binary_threshold_method": "participant_specific_percentiles",
+    "low_pain_percentile": 33,
+    "high_pain_percentile": 67
+  },
+  "validation": {
+    "method": "leave_one_participant_out_cv",
+    "folds": 5,
+    "participants": [
+      "vp01",
+      "vp02",
+      "vp03",
+      "vp04",
+      "vp05"
+    ],
+    "total_epochs": 201,
+    "class_balance": {
+      "low_pain": 97,
+      "high_pain": 104
+    }
+  }
+}
